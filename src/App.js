@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Recipe from './components/recipe';
+import axios from 'axios';
 
 function App() {
   const APP_ID = '';
@@ -13,10 +14,19 @@ function App() {
   },[])
 
   const getRecipes = async () => {
+    /* 
+     using fetch:
     const response = await fetch(`https://api.edamam.com/search?q=salad&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     console.log(data.hits)
-    setRecipes(data.hits)
+    setRecipes(data.hits) 
+    
+    using axios:
+    */
+   axios.get(`https://api.edamam.com/search?q=salad&app_id=${APP_ID}&app_key=${APP_KEY}`).then(response => {
+     console.log(response.data)
+     setRecipes(response.data.hits)
+   })
   }
 
   return (

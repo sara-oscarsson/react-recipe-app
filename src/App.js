@@ -38,8 +38,9 @@ function App() {
 
   const getSearch = (e) => {
     e.preventDefault();
-    console.log(search)
-    setQuery(search)
+    console.log(search);
+    setQuery(search);
+    setSearch('');
   }
 
   return (
@@ -54,6 +55,7 @@ function App() {
         title={recipe.recipe.label} 
         calories={recipe.recipe.calories} 
         image={recipe.recipe.image}
+        ingredients={recipe.recipe.ingredients}
         />
       ))}
     </div>
